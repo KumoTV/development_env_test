@@ -1,13 +1,13 @@
-FROM ruby:2.2.0
+FROM ruby:2.2.3
 
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev
 
-RUN mkdir /myapp
-WORKDIR /myapp
+RUN mkdir /catalogbuilder
+WORKDIR /catalogbuilder
 
-ADD Gemfile /myapp/Gemfile
-ADD Gemfile.lock /myapp/Gemfile.lock
+ADD Gemfile /catalogbuilder/Gemfile
+ADD Gemfile.lock /catalogbuilder/Gemfile.lock
 
 RUN bundle install
 
-ADD . /myapp
+ADD . /catalogbuilder
